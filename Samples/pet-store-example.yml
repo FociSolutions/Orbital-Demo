@@ -75,28 +75,6 @@ paths:
             schema: 
               $ref: '#/definitions/Error'
   
-  - /pets/{petId}:
-      get:
-        summary: Info for a specific pet
-        operationId: showPetById
-        tags: 
-        - pets
-        parameters: 
-            name: petId
-            in: path
-            required: true
-            description: The id of the pet to retrieve
-            type: string
-        responses: 
-          200: 
-            description: Expected response to a valid request
-            schema:  
-              $ref: '#/definitions/Pets'
-          default: 
-            description: Unexpected error while fetching {petId}
-            schema: 
-              $ref: '#/definitions/Error'
-
   - /pets:  
       post: 
         summary: Creates a pet (new resource)

@@ -150,8 +150,6 @@ definitions:
     required: 
       - id
       - name
-      - attributes 
-        - 
     properties: 
       id: 
         type: integer
@@ -160,6 +158,8 @@ definitions:
         type: string
       tag:
         type: string
+      attributes:
+        type: dictionary
 
   Pets: 
     type: array 

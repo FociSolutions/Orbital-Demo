@@ -1,1 +1,0 @@
-# This is a README for setting up an Orbital OpenAPI Spec - more to follow in future commits

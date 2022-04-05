@@ -1,0 +1,145 @@
+---
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Orbital Pet Store
+  description: An API that allows users to obtain existing information on pets, 
+    post new information and update/delete existing pet information
+  termsOfService: https://smartbear.com/terms-of-use/
+  contact:
+    name: Foci Solutions
+    url: https://focisolutions.com/
+    email: info@focisolutions.com
+  license: 
+    name: MIT
+
+host: petstore.swagger.io
+basePath: /v1
+schemes:
+  - http
+  - https
+  
+consumes: 
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /pets:
+    get: 
+     summary: List all pets
+     operationId: listPets
+     tags:
+        - pets
+     parameters:
+       - name: limit
+         in: query
+         description: How many items to return at one time (max 100)
+         required: false
+         type: integer
+         format: int32
+     responses: 
+        "200":
+         description: A paged array of pets
+         headers: 
+          x-next: 
+            type: string
+            description: A link to the next page of responses
+         schema: 
+          $ref: '#/definitions/Pets'
+        default: 
+         description: Unexpected error while fetching list of pets
+         schema: 
+            $ref: '#/definitions/Error'
+    post: 
+        summary: Creates a pet (new resource)
+        operationId: createPets
+        tags: 
+          - pets
+        responses: 
+          "201":
+            description: Null response
+          default: 
+            description: Unexpected error while creating a new pet
+            schema: 
+              $ref: '#/definitions/Error'
+  /pets/{petId}:
+      parameters: 
+          - name: petId
+            in: path
+            required: true
+            description: The id of the pet to retrieve
+            type: string
+      get:
+        summary: Info for a specific pet
+        operationId: showPetById
+        tags: 
+        - pets
+        responses: 
+          "200": 
+            description: Expected response to a valid request
+            schema:  
+              $ref: '#/definitions/Pets'
+          default: 
+            description: Unexpected error while fetching {petId}
+            schema: 
+              $ref: '#/definitions/Error'
+      put:
+        summary: Creates a new pet (new resource), or updates an 
+          existing pet if specified in the request URL
+        operationId: createsUpdatesPet
+        tags:
+          - pets
+        responses:
+          "200":
+            description: Updated or created successfully
+            schema:  
+              $ref: '#/definitions/Pets'
+          default: 
+            description: Unexpected error while creating or updating pet
+            schema: 
+              $ref: '#/definitions/Error'
+      delete:
+        summary: Deletes a specified pet
+        operationId: deletePet
+        tags:
+          - pets
+        responses:
+          "200":
+            description: Deleted pet successfully
+            schema:  
+              $ref: '#/definitions/Pets'
+          default: 
+            description: Unexpected error while deleting pet
+            schema: 
+              $ref: '#/definitions/Error'
+
+definitions:
+  Pet:
+    type: "object"
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      tag:
+        type: string
+  Pets:
+    type: array
+    items:
+      $ref: '#/definitions/Pet'
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

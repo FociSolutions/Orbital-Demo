@@ -24,7 +24,40 @@ Recommended Text Editors:
 
 For Orbital, a sample OpenAPI document in YAML can be located within the `Orbital-Demo` repository accessible via: https://github.com/FociSolutions/Orbital-Demo/blob/develop/Samples/pet-store-example.yml.
 
-The `pet-store-example.yml` sample document serves to assist developers with syntax, indentation formatting and pathing specifications. For further information on creating OpenAPI documents, please refer to the Swagger OpenAPI documentation here: https://swagger.io/specification/
+The `pet-store-example.yml` sample document serves to assist developers with syntax, indentation formatting and pathing specifications. **For further information on creating OpenAPI documents, please refer to the Swagger OpenAPI documentation here: https://swagger.io/specification/**
 
 
 ### Orbital Considerations 
+- Currently compatible with Swagger 2.0. Ensure the version at the top of the document specifies `swagger: '2.0'`.
+- When creating the mock definition from the OpenAPI specifications, the parser transcribes the verbs into specific JSON schemas, based on the path names given. 
+- Default scenarios are generated based off the specific paths given.
+
+
+### Troubleshooting
+- As OpenAPI YAML formats work on a `key: value` structure, ensure the keys are unique for each path. If different HTTP methods rely on the same path, you can nest them within the path name. e.g. PUT, DELETE, GET by id are dependent on a `petId` parameter in the URL therefore these methods can be nested with the `/pets/{petId}` path.
+- If different HTTP methods rely on the same `parameters`, you can declare them globally under the path name, and will be utilized across all endpoints. 
+```
+/pets/{petId}:
+      parameters: 
+          - name: petId
+            in: path
+            required: true
+            description: The id of the pet to retrieve
+            type: string
+
+        # Begin your HTTP Methods specification from this line downwards
+```
+- Depending on the amount of servers required, developers can specify the URL for different environments during stages of development. Each URL path shares the same key name `url` due to the preceeding `-` symbol denoting array types. **NOTE: Utilizing `server` syntax may be incompatible with Swagger 2.0 version**. 
+If working with newer syntax, consider indicating the version at the top of the file as OpenAPI version 3.0.x e.g. `openapi: 3.0.0`.  
+
+```
+servers:
+  - url: https://localhost:5001/api/v1/OrbitalAdmin
+    description: Basepath HTTPS URL when launching an Orbital instance for development
+
+  - url: http://localhost:5000/api/v1/OrbitalAdmin
+    description: Basepath HTTP URL when launching an Orbital instance for development
+```
+- If working on a local text editor, for added confirmation of correct syntax, indentation, etc. copy/paste your working file into the Swagger Editor to confirm the specifications are readable YAML/JSON format. URL: https://editor.swagger.io/
+
+**For further information on troubleshooting OpenAPI documents, please refer to the Swagger OpenAPI documentation here: https://swagger.io/specification/**

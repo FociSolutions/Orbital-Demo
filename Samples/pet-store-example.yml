@@ -18,7 +18,7 @@ basePath: /v1
 schemes:
   - http
   - https
-  
+
 consumes: 
   - application/json
 produces:
@@ -39,7 +39,7 @@ paths:
          type: integer
          format: int32
      responses: 
-        "200":
+        200:
          description: A paged array of pets
          headers: 
           x-next: 
@@ -57,7 +57,7 @@ paths:
         tags: 
           - pets
         responses: 
-          "201":
+          201:
             description: Null response
           default: 
             description: Unexpected error while creating a new pet
@@ -76,7 +76,7 @@ paths:
         tags: 
         - pets
         responses: 
-          "200": 
+          200: 
             description: Expected response to a valid request
             schema:  
               $ref: '#/definitions/Pets'
@@ -91,7 +91,7 @@ paths:
         tags:
           - pets
         responses:
-          "200":
+          200:
             description: Updated or created successfully
             schema:  
               $ref: '#/definitions/Pets'
@@ -105,7 +105,7 @@ paths:
         tags:
           - pets
         responses:
-          "200":
+          200:
             description: Deleted pet successfully
             schema:  
               $ref: '#/definitions/Pets'
@@ -116,7 +116,7 @@ paths:
 
 definitions:
   Pet:
-    type: "object"
+    type: object
     required:
       - id
       - name
@@ -128,12 +128,14 @@ definitions:
         type: string
       tag:
         type: string
+      attributes:
+        type: object
   Pets:
     type: array
     items:
       $ref: '#/definitions/Pet'
   Error:
-    type: "object"
+    type: object
     required:
       - code
       - message

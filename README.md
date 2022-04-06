@@ -7,9 +7,8 @@ Sample project demonstrating expected usage of Orbital within a development team
 ## Orbital OpenApi Specification
 
 ### Introduction
-The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. 
+The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. [1] 
 
-[Swagger/OpenAPI Main Page](https://swagger.io/specification/) 
 
 The output of an OpenAPI Specification is a document or documents that define the API. The format is usually `YAML` or `JSON`, however YAML is the preferred standard due to its human-readable syntax. 
 
@@ -65,6 +64,8 @@ If working with newer syntax, consider indicating the version at the top of the 
 
 **For further information on troubleshooting OpenAPI documents, please refer to the [Swagger OpenAPI documentation](https://swagger.io/specification/)**
 
+### References
+[1] : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) 
 
 
 ----
@@ -99,7 +100,10 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 
 ### Creating scenario for GET pet by ID
+- Add steps here
 
 ### Downloading Mock Definitions
+- Add steps here
 
 ### Saving progress
+- Add steps here

@@ -67,12 +67,12 @@ If working with newer syntax, consider indicating the version at the top of the 
 
 ----
 
-##cURL Bash Script
+## cURL Bash Script
 
-###Introduction
+### Introduction
 cURL is command line tool for doing "all sorts of URL manipulation and transfers" [1]. However, in this particular project, it is used to automate a series of HTTP requests to demonstrate the functionality of the Demo App.
 
-###Pet Store cURL Bash Script
+### Pet Store cURL Bash Script
 In order to demonstrate that the Pet Store Demo App is working in accordance to the specified Mock Definition contract as described in the .yaml file, a bash script is provided in the demo project, in the /Scripts folder in the root directory. The bash script is designed to hit the defined endpoints of /pets and /pets/{id} and demonstrates the following functionality:
 - testing the GET action to /pets to get all pets, should get a 200 OK response
 - testing the POST action to /pets, should get a 201 Created response
@@ -81,7 +81,7 @@ In order to demonstrate that the Pet Store Demo App is working in accordance to 
 - testing the PUT action to /pets/{id} to create a new pet with specified ID, should get a 200 OK
 - testing the DELETE action to /pets/{id} to delete a specific pet, should get a 200 OK
 
-###Running the Script
+### Running the Script
 To run the script via terminal, follow the steps below. Firstly, ensure that you are serving the Demo App locally so that the cURL requests can reach the endpoints. 
 
 **Step One: Ensuring the Script is Executable**
@@ -105,6 +105,6 @@ The bash script should then execute and print what it is doing at each step, as 
 
 ----
 
-##Sources
+## Sources
 [1] https://curl.se/docs/httpscripting.html
 

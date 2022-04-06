@@ -64,3 +64,47 @@ If working with newer syntax, consider indicating the version at the top of the 
 - If working on a local text editor, for added confirmation of correct syntax, indentation, etc. copy/paste your working file into the **Swagger Editor** to confirm the specifications are readable YAML/JSON format. URL: https://editor.swagger.io/
 
 **For further information on troubleshooting OpenAPI documents, please refer to the Swagger OpenAPI documentation here: https://swagger.io/specification/**
+
+----
+
+##cURL Bash Script
+
+###Introduction
+cURL is command line tool for doing "all sorts of URL manipulation and transfers" [1]. However, in this particular project, it is used to automate a series of HTTP requests to demonstrate the functionality of the Demo App.
+
+###Pet Store cURL Bash Script
+In order to demonstrate that the Pet Store Demo App is working in accordance to the specified Mock Definition contract as described in the .yaml file, a bash script is provided in the demo project, in the /Scripts folder in the root directory. The bash script is designed to hit the defined endpoints of /pets and /pets/{id} and demonstrates the following functionality:
+- testing the GET action to /pets to get all pets, should get a 200 OK response
+- testing the POST action to /pets, should get a 201 Created response
+- testing the GET action to /pets/{id} to get the details of a specific pet, should get a 200 OK response
+- testing the PUT action to /pets/{id} to update details of an existing pet, should get a 200 OK
+- testing the PUT action to /pets/{id} to create a new pet with specified ID, should get a 200 OK
+- testing the DELETE action to /pets/{id} to delete a specific pet, should get a 200 OK
+
+###Running the Script
+To run the script via terminal, follow the steps below. Firstly, ensure that you are serving the Demo App locally so that the cURL requests can reach the endpoints. 
+
+**Step One: Ensuring the Script is Executable**
+Secondly, the script should already be executable, but to ensure that it is:
+1. Navigate to the /Scripts folder.
+2. Execute the following command in terminal:
+```
+chmod +x ./PetStoreCurlTests.sh
+```
+
+**Step Two: Bash Command**
+This can be run from any directory in the terminal or run by navigating to the directory and executing.
+Run either of the following scripts in terminal depending on your current directory:
+```
+bash relative/path/to/Orbital-Demo/Scripts/PetStoreCurlTests.sh
+
+#or if already in directory:
+bash  ./PetStoreCurlTests.sh
+```
+The bash script should then execute and print what it is doing at each step, as well as the expected response. Then the actual response will be printed, and so on.
+
+----
+
+##Sources
+[1] https://curl.se/docs/httpscripting.html
+

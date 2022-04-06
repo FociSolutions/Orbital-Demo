@@ -96,3 +96,10 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 - **Metadata**: A title and description to explain the purpose of the scenario.
 - **Request Match Rules**: These rules will indicate what the user's HTTP request has to match to get a response from the server.
 - **Response**: The server's response to the user's HTTP request.
+
+
+### Creating scenario for GET pet by ID
+
+### Downloading Mock Definitions
+
+### Saving progress

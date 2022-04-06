@@ -63,9 +63,9 @@ paths:
             description: Unexpected error while creating a new pet
             schema: 
               $ref: '#/definitions/Error'
-  /pets/{petId}:
+  /pets/{id}:
       parameters: 
-          - name: petId
+          - name: id
             in: path
             required: true
             description: The id of the pet to retrieve
@@ -81,7 +81,7 @@ paths:
             schema:  
               $ref: '#/definitions/Pets'
           default: 
-            description: Unexpected error while fetching {petId}
+            description: Unexpected error while fetching {id}
             schema: 
               $ref: '#/definitions/Error'
       put:

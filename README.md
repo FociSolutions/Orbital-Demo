@@ -7,7 +7,7 @@ Sample project demonstrating expected usage of Orbital within a development team
 ## Orbital OpenApi Specification
 
 ### Introduction
-The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. [1] 
+The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. `[1] `
 
 
 The output of an OpenAPI Specification is a document or documents that define the API. The format is usually `YAML` or `JSON`, however YAML is the preferred standard due to its human-readable syntax. 
@@ -33,12 +33,12 @@ The `pet-store-example.yml` sample document serves to assist developers with syn
 
 
 ### Troubleshooting
-- As OpenAPI YAML formats work on a `key: value` structure, ensure the keys are unique for each path. If different HTTP methods rely on the same path, you can nest them within the path name. e.g. PUT, DELETE, GET by id are dependent on a `petId` parameter in the URL therefore these methods can be nested with the `/pets/{petId}` path.
+- As OpenAPI YAML formats work on a `key: value` structure, ensure the keys are unique for each path. If different HTTP methods rely on the same path, you can nest them within the path name. e.g. PUT, DELETE, GET by id are dependent on a `id` parameter in the URL therefore these methods can be nested with the `/pets/{id}` path.
 - If different HTTP methods rely on the same `parameters`, you can declare them globally under the path name, and will be utilized across all endpoints. 
 ```
 /pets/{petId}:
       parameters: 
-          - name: petId
+          - name: id
             in: path
             required: true
             description: The id of the pet to retrieve
@@ -65,7 +65,7 @@ If working with newer syntax, consider indicating the version at the top of the 
 **For further information on troubleshooting OpenAPI documents, please refer to the [Swagger OpenAPI documentation](https://swagger.io/specification/)**
 
 ### References
-[1] : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) 
+`[1]` : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) 
 
 
 ----
@@ -102,8 +102,21 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 ### Creating scenario for GET pet by ID
 - Add steps here
 
+
 ### Downloading Mock Definitions
-- Add steps here
+1. Once required endpoint scenarios are complete, select **"Download Mockdefinitions"** from the left-hand menu.
+
+2. Via the download menu, select the mock definition for download or check **"Select All"** for all available mocks within the browser session. 
+![Endpoint Editor View](/readme_images/download_menu.jpg)
+
+3. Click **"Download Selected"** and the file(s) will download automatically to the local file system. 
+
 
 ### Saving progress
-- Add steps here
+1. To save working definitions for future sessions, follow the steps to locally download the current version of the mock definition. See **Downloading Mock Definitions** for further details. 
+
+2. Navigate to the [Orbital Designer homepage](https://orbital-dev-designer.azurewebsites.net/) and click **"From File(s)"** under the **"Import an Existing Mockdefinition"**.
+
+3. Select **"From File(s)"** and upload your existing file(s) and click **"Next"**.
+
+4. The webpage should load and parse the JSON file with the applicable endpoints, requests, policies and responses intact.

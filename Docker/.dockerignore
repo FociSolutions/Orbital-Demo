@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **/bin/
 **/obj/
 **/node_modules/
@@ -9,4 +10,17 @@ tests/
 docker/
 azure-pipelines.yml
 **/*.md
+=======
+**/bin/
+**/obj/
+**/node_modules/
+.vs/
+.git/
+packages/
+report/
+tests/
+docker/
+azure-pipelines.yml
+**/*.md
+>>>>>>> af1a4ca (gitignore added)
 **/.gitignore

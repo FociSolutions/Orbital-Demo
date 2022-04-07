@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # demoAngular:
+  #   # Build Petstore Demo Frontend
+  #   build:
+  #     context: .
+  #     dockerfile: ./PetstoreDemo/Dockerfile
+  #     args:
+  #       - '--api-url=http://petstore.swagger.io/v2/swagger.json'
+  designer:
+    # Build Orbitial Designer
+    image: focisolutions/orbitaldesigner
+    ports:
+     - "4200:80"
+  mock:
+    # Build Orbitial Mock Server
+    image: focisolutions/orbitalmock
+    # environment:
+    ports:
+      - "5001:80"

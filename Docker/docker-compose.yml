@@ -1,6 +1,6 @@
 version: '3'
 services:
-  # demoAngular:
+  # PetstoreDemoAngular:
   #   # Build Petstore Demo Frontend
   #   build:
   #     context: .
@@ -14,7 +14,10 @@ services:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock
     environment:
-      - GIT_PATH=${GIT_PATH}
+      - GIT_REPO=${GIT_REPO}
+      - GIT_BRANCH=${GIT_BRANCH}
+      - GIT_PATH=${GIT_PATH}    
     ports:
       - "5001:80"
+    
     

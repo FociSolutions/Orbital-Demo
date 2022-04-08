@@ -14,9 +14,12 @@ services:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock
     environment:
-      - GIT_REPO=${GIT_REPO}
-      - GIT_BRANCH=${GIT_BRANCH}
-      - GIT_PATH=${GIT_PATH}    
+      - ORBITAL_IMPORT_SVC__GIT_REPO=${GIT_REPO}
+      - ORBITAL_IMPORT_SVC__GIT_BRANCH=${GIT_BRANCH}
+      - ORBITAL_IMPORT_SVC__GIT_PATH=${GIT_PATH}   
+      # - ORBITAL_IMPORT_SVC__GIT_REPO=https://github.com/FociSolutions/Orbital-Demo.git
+      # - ORBITAL_IMPORT_SVC__GIT_BRANCH=3597-dockerCompose
+      # - ORBITAL_IMPORT_SVC__GIT_PATH=./mock_definition_valid.json
     ports:
       - "5001:80"
     

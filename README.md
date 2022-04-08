@@ -106,7 +106,7 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 3. Within the **"General"** tab under **"Metadata"**, enter a scenario name (required), and description (recommended).
 
-4. An optional **"Policies"** configuration can be added to select delay response time from the request. Click the `+` button to add the policy. 
+4. An optional **"Policies"** configuration can be added to select delay response time from the request. Click the `"+"` button to add the policy. 
 
 5. Click **"Save"** to save progress on the current tab. 
 
@@ -115,13 +115,13 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 ![Request Tab View](readme_images/request_menu_options.jpg)
 
-7. Click the `+` button to add the rule and **"Save"** to save progress on the current tab.  
+7. Click the `"+"` button to add the rule and **"Save"** to save progress on the current tab.  
 
 8. Switch to the **"Response"** tab and under the **"Response Metadata"**, select the **"Repsonse Type"** and **"Status Code"**. For the `GET /pets/{id}` a status code of `200` is the standard response code for successful responses. 
 
 9. Under **"Response Headers"**, ensure the header configuration matches the OpenAPI contract specificed in the YAML file for the particular endpoint. In this use case, `key: Content-Type,  value: application/json` is configured as the expected response payload will be in JSON format as per the OpenAPI specification. 
 
-10. Click the `+` button to add the new response header.
+10. Click the `"+"` button to add the new response header.
 
 11. Within the **"Response Body"**, insert the expected JSON payload in the text editor for the scenario. 
 
@@ -156,6 +156,6 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 2. Specify the target server URI to upload active mock definitions. For the Orbital Server, https://localhost:5001/api/v1/OrbitalAdmin is the base URL to route endpoints to a centralised controller. 
 
-3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `>` or `<` to move the definitions to stage for upload to the server. 
+3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `">"` or `"<"` buttons to move the definitions to stage for upload to the server. 
 
 4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.

@@ -1,3 +1,4 @@
+
 # Label the stage as build
 FROM node:lts-alpine as build
 
@@ -13,4 +14,5 @@ RUN npm i
 
 # start app
 RUN npm run start
+
 

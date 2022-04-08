@@ -5,8 +5,6 @@ services:
   #   build:
   #     context: .
   #     dockerfile: ./PetstoreDemo/Dockerfile
-  #     args:
-  #       - '--api-url=http://petstore.swagger.io/v2/swagger.json'
   designer:
     # Build Orbitial Designer
     image: focisolutions/orbitaldesigner
@@ -15,6 +13,8 @@ services:
   mock:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock
-    # environment:
+    environment:
+      - GIT_PATH=${GIT_PATH}
     ports:
       - "5001:80"
+    

@@ -159,8 +159,3 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `>` or `<` to move the definitions to stage for upload to the server. 
 
 4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.
-
-
-### Test the Scenario
-
-- Testing with Angular demo app

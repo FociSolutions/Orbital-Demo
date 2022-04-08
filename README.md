@@ -100,14 +100,43 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 
 ### Creating scenario for GET pet by ID
-- Add steps here
+1. Select an endpoint to add a scenario. This example will utilize the `GET /pets/{id}` option.
+
+2. Click **"Add Scenario"**. `NOTE:` Upon creating the endpoints from the base YAML file, a **"Default OK Scenario"** will be checked. This can be unchecked or modified to act as the existing default should the Orbital filtration not find an appropriate match as a best scenario from front-end requests. 
+
+3. Within the **"General"** tab under **"Metadata"**, enter a scenario name (required), and description (recommended).
+
+4. An optional **"Policies"** configuration can be added to select delay response time from the request. Click the `+` button to add the policy. 
+
+5. Click **"Save"** to save progress on the current tab. 
+
+6. Switch to the **"Request"** tab and under the **"Request Rule Type"**, select the rules from the drop-down menu. In this example, select **"URL Match Rules"** to dynamically generate configuration options for constructing the URL string to match the HTTP request from the client. 
+**`NOTE:` For the "URL Match Rules" option, the Orbital Server will use relative pathing to the base URL utilized to search for matching URL strings. In this example `/pets/1` was the URL path entered instead of the absolute path: `https://{hostname}:{port}/pets/1`**.
+
+![Request Tab View](readme_images/request_menu_options.jpg)
+
+7. Click the `+` button to add the rule and **"Save"** to save progress on the current tab.  
+
+8. Switch to the **"Response"** tab and under the **"Response Metadata"**, select the **"Repsonse Type"** and **"Status Code"**. For the `GET /pets/{id}` a status code of `200` is the standard response code for successful responses. 
+
+9. Under **"Response Headers"**, ensure the header configuration matches the OpenAPI contract specificed in the YAML file for the particular endpoint. In this use case, `key: Content-Type,  value: application/json` is configured as the expected response payload will be in JSON format as per the OpenAPI specification. 
+
+10. Click the `+` button to add the new response header.
+
+11. Within the **"Response Body"**, insert the expected JSON payload in the text editor for the scenario. 
+
+![Response Tab View](readme_images/response_menu_options.jpg)
+
+12. Click **"Save"** to save progress on the current tab.
+
+13. Once complete, return to scenarios by clicking **"Back to Scenarios"** and return to endpoints main menu by clicking **"Back to Endpoints"**.
 
 
 ### Downloading Mock Definitions
-1. Once required endpoint scenarios are complete, select **"Download Mockdefinitions"** from the left-hand menu.
+1. Once all required endpoint scenarios are complete, select **"Download Mockdefinitions"** from the left-hand menu.
 
 2. Via the download menu, select the mock definition for download or check **"Select All"** for all available mocks within the browser session. 
-![Endpoint Editor View](/readme_images/download_menu.jpg)
+![Donwload View](/readme_images/download_menu.jpg)
 
 3. Click **"Download Selected"** and the file(s) will download automatically to the local file system. 
 
@@ -120,3 +149,18 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 3. Select **"From File(s)"** and upload your existing file(s) and click **"Next"**.
 
 4. The webpage should load and parse the JSON file with the applicable endpoints, requests, policies and responses intact.
+
+
+### Exporting to Mock Server
+1. On the left-side navigation menu, click **"Export Mock to Server"** to navigate to export current mock definitions to the target server. 
+
+2. Specify the target server URI to upload active mock definitions. For the Orbital Server, https://localhost:5001/api/v1/OrbitalAdmin is the base URL to route endpoints to a centralised controller. 
+
+3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `>` or `<` to move the definitions to stage for upload to the server. 
+
+4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.
+
+
+### Test the Scenario
+
+- Testing with Angular demo app

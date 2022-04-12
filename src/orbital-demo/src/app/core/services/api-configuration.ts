@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://petstore.swagger.io/v1';
+  rootUrl: string = 'https://localhost:5001/api/v1/OrbitalAdmin';
 }
 
 export interface ApiConfigurationInterface {

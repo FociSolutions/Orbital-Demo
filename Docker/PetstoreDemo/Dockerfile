@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Label the stage as build
 FROM node:lts-alpine as build
@@ -35,3 +36,21 @@ COPY ./src/src/orbital-demo .
 RUN npm run start
 
 >>>>>>> 30b9fcb (compose edited)
+=======
+# Label the stage as build
+FROM node:lts-alpine as build
+
+# Set Working directory
+WORKDIR /app
+
+COPY ./ /app
+
+RUN npm i
+
+# # add app
+# COPY ./src/orbital-demo .
+
+# start app
+RUN npm run start
+
+>>>>>>> 5be08ca (docker compose edited for mockdef from git)

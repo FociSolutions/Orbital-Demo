@@ -16,7 +16,7 @@ curl -v --header "Content-Type: application/json" -d "" $PET_PATH
 
 #testing the POST action to /pets, should get a 201 Created response
 echo "POSTing to the /pets endpoint and expecting a 201 Created response"
-curl -v -X POST --header "Content-Type: application/json" -d "{\"id\":\"5\",\"name\":\"sherlock\",\"tag\":\"cat\"}" $PET_PATH
+curl -v -X POST --header "Content-Type: application/json" -d "{\"id\":\"10\",\"name\":\"sherlock\",\"tag\":\"cat\"}" $PET_PATH
 
 #testing the GET action to /pets/{id} to get the details of a specific pet, should get a 200 OK response
 echo "GETting the pet with ID=1 from the /pets/1 endpoint and expecting a 200 OK"

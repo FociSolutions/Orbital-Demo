@@ -57,10 +57,8 @@ class PetsService extends __BaseService {
    * @param limit How many items to return at one time (max 100)
    * @return A paged array of pets
    */
-  listPets(limit?: number): __Observable<Pets> {
-    return this.listPetsResponse(limit).pipe(
-      __map(_r => _r.body)
-    );
+  listPets(limit?: number): __Observable<__StrictHttpResponse<Pets>> {
+    return this.listPetsResponse(limit);
   }
 
   /**

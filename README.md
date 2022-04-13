@@ -64,16 +64,12 @@ If working with newer syntax, consider indicating the version at the top of the 
 
 **For further information on troubleshooting OpenAPI documents, please refer to the [Swagger OpenAPI documentation](https://swagger.io/specification/)**
 
-### References
-`[1]` : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) 
-
 ----
-
 
 ## cURL Bash Script
 
 ### Introduction
-cURL is command line tool for doing "all sorts of URL manipulation and transfers" [1]. However, in this particular project, it is used to automate a series of HTTP requests to demonstrate the functionality of the Demo App.
+cURL is command line tool for doing "all sorts of URL manipulation and transfers" `[2]`. However, in this particular project, it is used to automate a series of HTTP requests to demonstrate the functionality of the Demo App.
 
 ### Pet Store cURL Bash Script
 In order to demonstrate that the Pet Store Demo App is working in accordance to the specified Mock Definition contract as described in the .yaml file, a bash script is provided in the demo project, in the /Scripts folder in the root directory. The bash script is designed to hit the defined endpoints of /pets and /pets/{id} and demonstrates the following functionality:
@@ -105,12 +101,6 @@ bash relative/path/to/Orbital-Demo/Scripts/PetStoreCurlTests.sh
 bash  ./PetStoreCurlTests.sh
 ```
 The bash script should then execute and print what it is doing at each step, as well as the expected response. Then the actual response will be printed, and so on.
-
-----
-
-## Sources
-[1] https://curl.se/docs/httpscripting.html
-
 
 ----
 
@@ -203,3 +193,9 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `">"` or `"<"` buttons to move the definitions to stage for upload to the server. 
 
 4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.
+
+---
+
+### References
+`[1]` : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) \
+`[2]` : [Curl Scripting](https://curl.se/docs/httpscripting.html)

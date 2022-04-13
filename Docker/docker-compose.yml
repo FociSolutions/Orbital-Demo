@@ -14,10 +14,11 @@ services:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock
     # envirement variables to be used for pulling mockdefinition from git repo
-    # environment:
-    #   - ORBITAL_IMPORT_SVC__GIT_REPO=${GIT_REPO}
-    #   - ORBITAL_IMPORT_SVC__GIT_BRANCH=${GIT_BRANCH}
-    #   - ORBITAL_IMPORT_SVC__GIT_PATH=${GIT_PATH}
+    environment:
+      - ORBITAL_IMPORT_SVC__GIT_REPO=${GIT_REPO}
+      - ORBITAL_IMPORT_SVC__GIT_BRANCH=${GIT_BRANCH}
+      - ORBITAL_IMPORT_SVC__GIT_PATH=${GIT_PATH}
+      - LD_LIBRARY_PATH=/app/runtimes/debian.9-x64/native/
     ports:
       - "5001:80"
     

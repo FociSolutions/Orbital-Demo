@@ -4,12 +4,12 @@ FROM node:lts-alpine as build
 # Set Working directory
 WORKDIR /app
 
-COPY ./src/src/orbital-demo/package.json ./src/src/orbital-demo/package.json ./
+COPY ./ /app
 
-RUN npm ci
+RUN npm i
 
-# add app
-COPY ./src/src/orbital-demo .
+# # add app
+# COPY ./src/orbital-demo .
 
 # start app
 RUN npm run start

@@ -1,6 +1,6 @@
 /* tslint:disable */
 export interface Pet {
-  attributes?: {};
+  attributes?: Record<string, string>;
   id: number;
   name: string;
   tag?: string;

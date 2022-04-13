@@ -1,4 +1,5 @@
 <div class="title">
   <h1>Pet Store.</h1>
   <h2>Orbital Demo App by Foci Solutions</h2>
+  <p *ngFor="let pet of pets">{{ pet.attributes?.personalityTraits | json }}</p>
 </div>

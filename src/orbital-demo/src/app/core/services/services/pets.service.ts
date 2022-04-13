@@ -59,7 +59,7 @@ class PetsService extends __BaseService {
    */
   listPets(limit?: number): __Observable<Pets> {
     return this.listPetsResponse(limit).pipe(
-      __map(_r => _r.body as Pets)
+      __map(_r => _r.body)
     );
   }
 

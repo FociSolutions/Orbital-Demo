@@ -1,5 +1,24 @@
 <div class="title">
   <h1>Pet Store.</h1>
   <h2>Orbital Demo App by Foci Solutions</h2>
-  <p *ngFor="let pet of pets">{{ pet | json }}</p>
+  <div class="button-row">
+    <button class="action-button" (click)="getAllPets()">GET PETS</button>
+  </div>
+  <div class="request-response">
+    <div class="column">
+      <h3>REQUEST</h3>
+      <p>
+        <b>Verb Type:</b> {{ request.verbType }}<br>
+        <b>Path:</b> {{ request.path }}<br>
+        <b>Content Type:</b> {{ request.contentType }}<br>
+      </p>
+    </div>
+    <div class="column">
+      <h3>RESPONSE</h3>
+      <p>
+        <b>Status Code:</b> {{ response.statusCode }}<br>
+        <b>Response Body:</b> {{ response?.responseBody | json }}
+      </p>
+    </div>
+  </div>
 </div>

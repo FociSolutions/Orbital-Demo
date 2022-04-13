@@ -7,8 +7,9 @@ import { Pets } from '../app/core/services/models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+
 export class AppComponent {
-  title = 'orbital-demo';
+  title: string = 'orbital-demo';
 
   public pets: Pets = [];
 

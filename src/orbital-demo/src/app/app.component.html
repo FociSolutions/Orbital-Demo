@@ -1,5 +1,5 @@
 <div class="title">
   <h1>Pet Store.</h1>
   <h2>Orbital Demo App by Foci Solutions</h2>
-  <petstore-searchbar></petstore-searchbar>
+  <p *ngFor="let pet of pets">{{ pet | json }}</p>
 </div>

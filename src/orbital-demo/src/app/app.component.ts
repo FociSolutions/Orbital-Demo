@@ -46,7 +46,9 @@ export class AppComponent implements OnInit, OnDestroy {
       contentType: 'application/json',
     };
     this.subscriptions.push(
-      this.petService.listPetsResponse().subscribe(this.setResponse)
+      this.petService.listPetsResponse().subscribe((response) => {
+        this.setResponse(response);
+      })
     );
   }
 
@@ -57,7 +59,9 @@ export class AppComponent implements OnInit, OnDestroy {
       contentType: 'application/json',
     };
     this.subscriptions.push(
-      this.petService.createPetsResponse().subscribe(this.setResponse)
+      this.petService.createPetsResponse().subscribe((response) => {
+        this.setResponse(response);
+      })
     );
   }
 
@@ -68,7 +72,9 @@ export class AppComponent implements OnInit, OnDestroy {
       contentType: 'application/json',
     };
     this.subscriptions.push(
-      this.petService.deletePetResponse(id).subscribe(this.setResponse)
+      this.petService.deletePetResponse(id).subscribe((response) => {
+        this.setResponse(response);
+      })
     );
   }
 

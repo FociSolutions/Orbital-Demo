@@ -13,12 +13,10 @@ RUN npm i
 # build app
 RUN npm run build
 
-
 FROM nginx:1.20-alpine
 
 ## Copy our default nginx config
 COPY ./nginx/default.conf /etc/nginx/conf.d/
-
 
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*

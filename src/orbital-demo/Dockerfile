@@ -2,14 +2,9 @@
 FROM node:lts-alpine as build
 
 # Set Working directory
-# WORKDIR /usr/local/app
 
-# COPY ./ /usr/local/app
-
-# RUN npm install
 WORKDIR /app
 
-# COPY ./package.json .package-lock.json ./
 # copy app
 COPY ./ /app
 
@@ -18,7 +13,7 @@ RUN npm i
 # build app
 RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:1.20-alpine
 
 ## Copy our default nginx config
 COPY ./nginx/default.conf /etc/nginx/conf.d/

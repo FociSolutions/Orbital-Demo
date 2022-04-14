@@ -18,8 +18,8 @@
     - [Downloading Mock Definitions](#downloading-mock-definitions)
     - [Saving progress](#saving-progress)
     - [Exporting to Mock Server](#exporting-to-mock-server)
-    - [Running demo in Docker](#running-demo-in-docker)
-    - [References](#references)
+  - [Running demo in Docker](#running-demo-in-docker)
+  - [References](#references)
 
 ----
 
@@ -220,12 +220,15 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 
 4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.
 
-### Running demo in Docker
+---
+
+## Running demo in Docker
 1. CD into src/orbital-demo/ 
 2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default mock_definition_valid.json file from Orbital-Demo git repository. You could also use your own mock_definition.json file saved locally or from a remote server by updating  .env
 3. Open your browser and navigate to https://localhost:8080 to see the demo running. Orbital-Designer will be available at https://localhost:4020/, the Orbital Server - https://localhost:5001/api/v1/OrbitalAdmin
----
 
-### References
+----
+
+## References
 `[1]` : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) \
 `[2]` : [Curl Scripting](https://curl.se/docs/httpscripting.html)

@@ -19,27 +19,31 @@ interface ResponseData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent implements OnInit, OnDestroy {
   title: string = 'orbital-demo';
 
   subscriptions: Subscription[] = [];
 
-  request: Partial<RequestData> = {};
-  response: Partial<ResponseData> = {};
+  request: RequestData | null = null;
+  response: ResponseData | null = null;
 
-  constructor(private petService: PetsService) {}
+  constructor(public petService: PetsService) {}
 
   ngOnInit(): void {}
 
-  setResponse(response: StrictHttpResponse<unknown>) : void {
+  setResponse(response: StrictHttpResponse<unknown>): void {
     this.response = {
       statusCode: response.status,
       responseBody: response.body,
     };
   }
 
+  setRootUrl(url: string) {
+    this.petService.rootUrl = url;
+  }
+
   getAllPets(): void {
+    this.response = null;
     this.request = {
       verbType: 'GET',
       path: '/pets',
@@ -49,11 +53,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.petService.listPetsResponse().subscribe((response) => {
         this.setResponse(response);
       })
-
     );
   }
 
   createPet(): void {
+    this.response = null;
     this.request = {
       verbType: 'POST',
       path: '/pets',
@@ -67,6 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   deletePet(id: string): void {
+    this.response = null;
     this.request = {
       verbType: 'DELETE',
       path: `/pets/${id}`,

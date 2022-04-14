@@ -1,13 +1,37 @@
 # Orbital-Demo
-Sample project demonstrating expected usage of Orbital within a development team
 
+  - [Introduction](#introduction)
+  - [Orbital OpenApi Specification](#orbital-openapi-specification)
+    - [Introduction](#introduction-1)
+    - [Creating an OpenAPI document](#creating-an-openapi-document)
+    - [Orbital Considerations](#orbital-considerations)
+    - [Troubleshooting](#troubleshooting)
+  - [cURL Bash Script](#curl-bash-script)
+    - [Introduction](#introduction-2)
+    - [Pet Store cURL Bash Script](#pet-store-curl-bash-script)
+    - [Running the Script](#running-the-script)
+  - [Designing Mock Definitions](#designing-mock-definitions)
+    - [Creating a Mock Definition](#creating-a-mock-definition)
+    - [What is a Scenario?](#what-is-a-scenario)
+    - [Creating scenario for GET pet by ID](#creating-scenario-for-get-pet-by-id)
+    - [Downloading Mock Definitions](#downloading-mock-definitions)
+    - [Saving progress](#saving-progress)
+    - [Exporting to Mock Server](#exporting-to-mock-server)
+    - [References](#references)
+
+----
+
+## Introduction
+This repo contains the project demonstrating expected usage of Orbital within a development team. This includes a simple web app built with Angular to send HTTP requests to the mock server, receiving JSON payload based on the scenarios configured from a created mock definition. An additional docker directory is enclosed to demonstrate how to configure an server image from Dockerhub with a local mock definition and stand it up for immediate use. 
+
+For the complete breakdown of Orbital, please visit the [Official Orbital Mock Website](https://orbitalmock.com/docs/about-us/) 
 
 ----
 
 ## Orbital OpenApi Specification
 
 ### Introduction
-The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. `[1] `
+The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both developers and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. `[1]`
 
 
 The output of an OpenAPI Specification is a document or documents that define the API. The format is usually `YAML` or `JSON`, however YAML is the preferred standard due to its human-readable syntax. 

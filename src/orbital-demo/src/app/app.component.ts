@@ -25,8 +25,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  request: Partial<RequestData> = {};
-  response: Partial<ResponseData> = {};
+  request: RequestData | null = null;
+  response: ResponseData | null = null;
 
   constructor(public petService: PetsService) {}
 
@@ -44,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getAllPets(): void {
+    this.response = null;
     this.request = {
       verbType: 'GET',
       path: '/pets',
@@ -71,6 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   deletePet(id: string): void {
+    this.response = null;
     this.request = {
       verbType: 'DELETE',
       path: `/pets/${id}`,

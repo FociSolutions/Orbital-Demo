@@ -17,7 +17,7 @@
   <div class="request-response">
     <div class="column">
       <h3>REQUEST</h3>
-      <p>
+      <p *ngIf="request">
         <b>Verb Type:</b> {{ request.verbType }}<br />
         <b>Path:</b> {{ request.path }}<br />
         <b>Content Type:</b> {{ request.contentType }}<br />
@@ -25,7 +25,7 @@
     </div>
     <div class="column">
       <h3>RESPONSE</h3>
-      <p>
+      <p *ngIf="response">
         <b>Status Code:</b> {{ response.statusCode }}<br />
         <b>Response Body:</b> {{ response?.responseBody | json }}
       </p>

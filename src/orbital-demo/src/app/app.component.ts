@@ -56,6 +56,20 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  getPet(id: string): void {
+    this.response = null;
+    this.request = {
+      verbType: 'GET',
+      path: '/pet/1',
+      contentType: 'application/json',
+    }
+    this.subscriptions.push(
+      this.petService.showPetByIdResponse(id).subscribe((response) => {
+        this.setResponse(response);
+      })
+    );
+  }
+
   createPet(): void {
     this.response = null;
     this.request = {

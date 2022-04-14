@@ -49,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.petService.listPetsResponse().subscribe((response) => {
         this.setResponse(response);
       })
+
     );
   }
 

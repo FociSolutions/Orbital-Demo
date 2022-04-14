@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PetsService } from './core/services/services';
-import { Pet } from '../app/core/services/models';
 import { Subscription } from 'rxjs';
 import { StrictHttpResponse } from './core/services/strict-http-response';
 
@@ -20,6 +19,7 @@ interface ResponseData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+
 export class AppComponent implements OnInit, OnDestroy {
   title: string = 'orbital-demo';
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {}
 
-  setResponse(response: StrictHttpResponse<unknown>) {
+  setResponse(response: StrictHttpResponse<unknown>) : void {
     this.response = {
       statusCode: response.status,
       responseBody: response.body,
@@ -47,6 +47,20 @@ export class AppComponent implements OnInit, OnDestroy {
     };
     this.subscriptions.push(
       this.petService.listPetsResponse().subscribe((response) => {
+        this.setResponse(response);
+      })
+
+    );
+  }
+
+  createPet(): void {
+    this.request = {
+      verbType: 'POST',
+      path: '/pets',
+      contentType: 'application/json',
+    };
+    this.subscriptions.push(
+      this.petService.createPetsResponse().subscribe((response) => {
         this.setResponse(response);
       })
     );

@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   request: Partial<RequestData> = {};
   response: Partial<ResponseData> = {};
 
-  constructor(private petService: PetsService) {}
+  constructor(public petService: PetsService) {}
 
   ngOnInit(): void {}
 
@@ -37,6 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
       statusCode: response.status,
       responseBody: response.body,
     };
+  }
+
+  setRootUrl(url: string) {
+    this.petService.rootUrl = url;
   }
 
   getAllPets(): void {

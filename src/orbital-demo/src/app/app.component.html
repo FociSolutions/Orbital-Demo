@@ -1,6 +1,14 @@
 <div class="title">
   <h1>Pet Store.</h1>
   <h2>Orbital Demo App by Foci Solutions</h2>
+  <div class="server-row">
+    Server:
+    <input
+      type="text"
+      (change)="setRootUrl($any($event.target).value)"
+      [value]="petService.rootUrl"
+    />
+  </div>
   <div class="button-row">
     <button class="action-button" (click)="getAllPets()">GET PETS</button>
     <button class="action-button" (click)="deletePet('5')">DELETE PET</button>

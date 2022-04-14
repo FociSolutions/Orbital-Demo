@@ -18,6 +18,7 @@
     - [Downloading Mock Definitions](#downloading-mock-definitions)
     - [Saving progress](#saving-progress)
     - [Exporting to Mock Server](#exporting-to-mock-server)
+    - [Running demo in Docker](#running-demo-in-docker)
     - [References](#references)
 
 ----

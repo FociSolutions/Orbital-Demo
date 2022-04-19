@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.response = null;
     this.request = {
       verbType: 'GET',
-      path: '/pet/1',
+      path: '/pets/1',
       contentType: 'application/json',
     }
     this.subscriptions.push(
@@ -79,6 +79,20 @@ export class AppComponent implements OnInit, OnDestroy {
     };
     this.subscriptions.push(
       this.petService.createPetsResponse().subscribe((response) => {
+        this.setResponse(response);
+      })
+    );
+  }
+
+  updatePet(id: string): void {
+    this.response = null;
+    this.request = {
+      verbType: 'PUT',
+      path: `/pets/${id}`,
+      contentType: 'application/json',
+    };
+    this.subscriptions.push(
+      this.petService.createsUpdatesPetResponse(id).subscribe((response) => {
         this.setResponse(response);
       })
     );

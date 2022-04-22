@@ -225,7 +225,7 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 ## Running demo in Docker
 1. CD into src/orbital-demo/ 
 2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default mock_definition_valid.json file from Orbital-Demo git repository. You could also use your own mock_definition.json file saved locally or from a remote server by updating  .env
-3. Open your browser and navigate to https://localhost:8080 to see the demo running. Orbital-Designer will be available at https://localhost:4020/, the Orbital Server - https://localhost:5001/api/v1/OrbitalAdmin
+3. Open your browser and navigate to https://localhost:8080 to see the demo running. Orbital-Designer will be available at https://localhost:4200/, the Orbital Server - https://localhost:5001/api/v1/OrbitalAdmin
 
 ----
 

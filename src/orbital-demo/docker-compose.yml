@@ -11,7 +11,7 @@ services:
     # Build Orbitial Designer
     image: focisolutions/orbitaldesigner
     ports:
-     - "4200:80"
+      - "4200:80"
   mock:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock

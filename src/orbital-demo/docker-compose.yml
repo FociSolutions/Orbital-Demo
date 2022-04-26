@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
   designer:
     # Build Orbitial Designer
     image: focisolutions/orbitaldesigner

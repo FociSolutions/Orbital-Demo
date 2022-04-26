@@ -75,7 +75,8 @@
               "browserTarget": "orbital-demo:build:production"
             },
             "development": {
-              "browserTarget": "orbital-demo:build:development"
+              "browserTarget": "orbital-demo:build:development",
+              "port": 4400
             }
           },
           "defaultConfiguration": "development"

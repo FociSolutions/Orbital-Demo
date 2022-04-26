@@ -214,7 +214,7 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 ### Exporting to Mock Server
 1. On the left-side navigation menu, click **"Export Mock to Server"** to navigate to export current mock definitions to the target server. 
 
-2. Specify the target server URI to upload active mock definitions. For the Orbital Server, https://localhost:5001/api/v1/OrbitalAdmin is the base URL to route endpoints to a centralised controller. 
+2. Specify the target server URI to upload active mock definitions. For the Orbital Server, http://localhost:5000/api/v1/OrbitalAdmin is the base URL to route endpoints to a centralised controller. 
 
 3. Check the currently active mock definitions within your browser session (or check the **"Select All"** checkbox), and press `">"` or `"<"` buttons to move the definitions to stage for upload to the server. 
 
@@ -223,9 +223,9 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 ---
 
 ## Running demo in Docker
-1. CD into src/orbital-demo/ 
-2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default mock_definition_valid.json file from Orbital-Demo git repository. You could also use your own mock_definition.json file saved locally or from a remote server by updating  .env
-3. Open your browser and navigate to https://localhost:8080 to see the demo running. Orbital-Designer will be available at https://localhost:4020/, the Orbital Server - https://localhost:5001/api/v1/OrbitalAdmin
+1. CD into `src/orbital-demo/` 
+2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default `PetStoreMockDef.json` file from Orbital-Demo git repository. You could also use your own Mock Definition file saved locally or from a remote server by updating the `src/orbital-demo/.env` file
+3. Open your browser and navigate to http://localhost:8080 to see the demo running. Orbital-Designer will be available at http://localhost:4200/, the Orbital Server - http://localhost:5000/
 
 ----
 

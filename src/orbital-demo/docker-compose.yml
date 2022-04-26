@@ -5,11 +5,13 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - "8080:80"
   designer:
     # Build Orbitial Designer
     image: focisolutions/orbitaldesigner
     ports:
-     - "4200:80"
+      - "4200:80"
   mock:
     # Build Orbitial Mock Server
     image: focisolutions/orbitalmock
@@ -20,4 +22,4 @@ services:
       - ORBITAL_IMPORT_SVC__GIT_PATH=${GIT_PATH}
       - LD_LIBRARY_PATH=/app/runtimes/debian.9-x64/native/
     ports:
-      - "5001:80"
+      - "5000:80"

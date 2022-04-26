@@ -7,6 +7,7 @@
     - [Creating an OpenAPI document](#creating-an-openapi-document)
     - [Orbital Considerations](#orbital-considerations)
     - [Troubleshooting](#troubleshooting)
+  - [Running demo with Docker](#running-demo-with-docker)
   - [cURL Bash Script](#curl-bash-script)
     - [Introduction](#introduction-2)
     - [Pet Store cURL Bash Script](#pet-store-curl-bash-script)
@@ -18,7 +19,6 @@
     - [Downloading Mock Definitions](#downloading-mock-definitions)
     - [Saving progress](#saving-progress)
     - [Exporting to Mock Server](#exporting-to-mock-server)
-  - [Running demo in Docker](#running-demo-in-docker)
   - [References](#references)
 
 ----
@@ -89,6 +89,13 @@ If working with newer syntax, consider indicating the version at the top of the 
 - If working on a local text editor, for added confirmation of correct syntax, indentation, etc. copy/paste your working file into the [Swagger Editor](https://editor.swagger.io/) to confirm the specifications are readable YAML/JSON format. 
 
 **For further information on troubleshooting OpenAPI documents, please refer to the [Swagger OpenAPI documentation](https://swagger.io/specification/)**
+
+----
+
+## Running demo with Docker
+1. Navigate into `src/orbital-demo/` 
+2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default `PetStoreMockDef.json` file from Orbital-Demo git repository. You could also use your own Mock Definition file saved locally or from a remote server by updating the `src/orbital-demo/.env` file
+3. Open your browser and navigate to http://localhost:8080 to see the demo running. Orbital-Designer will be available at http://localhost:4200/, the Orbital Server - http://localhost:5000/
 
 ----
 
@@ -221,13 +228,6 @@ The purpose of a scenario is to describe what the endpoint will expect from the 
 4. Once target files are selected within the **"Files Selected to Export"**, click **"Upload"**.
 
 ---
-
-## Running demo in Docker
-1. CD into `src/orbital-demo/` 
-2. Run command `docker-compose up` to start the demo in Docker. Orbital server will be using default `PetStoreMockDef.json` file from Orbital-Demo git repository. You could also use your own Mock Definition file saved locally or from a remote server by updating the `src/orbital-demo/.env` file
-3. Open your browser and navigate to http://localhost:8080 to see the demo running. Orbital-Designer will be available at http://localhost:4200/, the Orbital Server - http://localhost:5000/
-
-----
 
 ## References
 `[1]` : [Swagger/OpenAPI Main Page](https://swagger.io/specification/) \

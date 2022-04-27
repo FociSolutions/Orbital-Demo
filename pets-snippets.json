@@ -1,0 +1,41 @@
+//GET /pets - Paste in response body of Orbital Designer
+{"pets": [
+    {
+      "id": 5,
+      "name": "sherlock",
+      "tag": "cat",
+      "attributes": {
+            "eyeColour":"maroon",
+            "furColour": "black",
+            "houseTrained": false,
+            "personalityTraits": ["inquisitive", "playful", "stubborn"]
+      }
+    },
+    {
+      "id": 1,
+      "name": "alfredo",
+      "tag": "cat",
+      "attributes": {
+            "eyeColour":"brown",
+            "furColour": "cinamon",
+            "houseTrained": true,
+            "personalityTraits": ["curious", "adventurous", "intelligent"]
+      }
+    },
+    {
+      "id": 8,
+      "name": "tom",
+      "tag": "cat",
+      "attributes": {
+            "eyeColour":"green",
+            "furColour": "blue",
+            "houseTrained": true,
+            "personalityTraits": ["aggressive", "energetic", "vindictive"]
+      }
+    }]
+  }
+
+//DELETE pets/ID
+{
+  "message": "Resource deleted successfully"
+}

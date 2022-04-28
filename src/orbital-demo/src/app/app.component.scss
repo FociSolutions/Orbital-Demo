@@ -1,0 +1,50 @@
+html {
+  font-size: 16px;
+}
+
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 6rem;
+  line-height: 1rem;
+}
+
+.title h2 {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.server-row {
+  input {
+    min-width: 15rem;
+  }
+  margin-bottom: 1rem;
+}
+
+.request-response {
+  padding: 0 6rem 0 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.column {
+  padding: 2rem;
+  min-width: 20rem;
+}
+
+.action-button {
+  margin: 1rem;
+}
+
+.column p {
+  text-align: left;
+}

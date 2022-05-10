@@ -1,1 +1,390 @@
-{"id":"51a757fc-13ba-4523-9d3f-4ad137ae9de0","metadata":{"title":"PetStoreMockDef","description":"This is a sample mock definition generated for core HTTP methods to interact with a in-memory backend server"},"tokenValidation":false,"openApi":{"swagger":"2.0","info":{"version":"1.0.0","title":"Orbital Pet Store","description":"An API that allows users to obtain existing information on pets, post new information and update/delete existing pet information","termsOfService":"https://smartbear.com/terms-of-use/","contact":{"name":"Foci Solutions","url":"https://focisolutions.com/","email":"info@focisolutions.com"},"license":{"name":"MIT"}},"host":"petstore.swagger.io","basePath":"/v1","schemes":["http","https"],"consumes":["application/json"],"produces":["application/json"],"paths":{"/pets":{"get":{"summary":"List all pets","operationId":"listPets","tags":["pets"],"parameters":[{"name":"limit","in":"query","description":"How many items to return at one time (max 100)","required":false,"type":"integer","format":"int32"}],"responses":{"200":{"description":"A paged array of pets","headers":{"x-next":{"type":"string","description":"A link to the next page of responses"}},"schema":{"$ref":"#/definitions/Pets"}},"default":{"description":"Unexpected error while fetching list of pets","schema":{"$ref":"#/definitions/Error"}}}},"post":{"summary":"Creates a pet (new resource)","operationId":"createPets","tags":["pets"],"responses":{"201":{"description":"Null response"},"default":{"description":"Unexpected error while creating a new pet","schema":{"$ref":"#/definitions/Error"}}}}},"/pets/{id}":{"parameters":[{"name":"id","in":"path","required":true,"description":"The id of the pet to retrieve","type":"string"}],"get":{"summary":"Info for a specific pet","operationId":"showPetById","tags":["pets"],"responses":{"200":{"description":"Expected response to a valid request","schema":{"$ref":"#/definitions/Pets"}},"default":{"description":"Unexpected error while fetching {id}","schema":{"$ref":"#/definitions/Error"}}}},"put":{"summary":"Creates a new pet (new resource), or updates an existing pet if specified in the request URL","operationId":"createsUpdatesPet","tags":["pets"],"responses":{"200":{"description":"Updated or created successfully","schema":{"$ref":"#/definitions/Pets"}},"default":{"description":"Unexpected error while creating or updating pet","schema":{"$ref":"#/definitions/Error"}}}},"delete":{"summary":"Deletes a specified pet","operationId":"deletePet","tags":["pets"],"responses":{"200":{"description":"Deleted pet successfully","schema":{"$ref":"#/definitions/Pets"}},"default":{"description":"Unexpected error while deleting pet","schema":{"$ref":"#/definitions/Error"}}}}}},"definitions":{"Pet":{"type":"object","required":["id","name"],"properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"},"tag":{"type":"string"},"attributes":{"type":"object"}}},"Pets":{"type":"array","items":{"$ref":"#/definitions/Pet"}},"Error":{"type":"object","required":["code","message"],"properties":{"code":{"type":"integer","format":"int32"},"message":{"type":"string"}}}}},"scenarios":[{"id":"c5117574-b2ed-49d4-b9d4-6e364a180714","metadata":{"title":"Create a Pet","description":"Returns 201 Resource Created "},"verb":3,"path":"/pets","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"message\": \"Resource created successfully\"\n}","status":201,"type":1},"requestMatchRules":{"headerRules":[{"key":"Content-Type","value":"application/json","type":5}],"queryRules":[],"bodyRules":[],"urlRules":[]},"policies":[{"type":1,"value":500}],"defaultScenario":true,"tokenRule":{"validationType":0,"rules":[]}},{"id":"3b73f4e3-4885-4fc6-bfa0-90b212c8ef29","metadata":{"title":"Pet Not Found","description":"Return an Error 422 response for no pets found"},"verb":0,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"error\":{\n    \"code\": 422,\n    \"message\": \"No pets found\"\n  }\n}","status":422,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"0bb63084-091b-45f3-a3cd-5b52da59b4d0","metadata":{"title":"Invalid Put Request","description":"Returns 400 Bad Request "},"verb":1,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{ \n  \"error\":{\n    \"code\": 400,\n    \"message\": \"Unexepcted error: Bad request sent\"\n  }\n}","status":400,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/string"}]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"46986e66-ee6c-452c-af55-0b32dbedd2f3","metadata":{"title":"Invalid Resource","description":"Returns 204 No Content"},"verb":2,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"error\": {\n    \"code\": 204,\n    \"message\": \"No Content Found for selected resource\"\n  }\n}","status":204,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/21"}]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"853acaa8-b8af-4c41-8908-df5c32833960","metadata":{"title":"Get Alfredo","description":"Returns Alfredo "},"verb":0,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"id\": 1,\n  \"name\": \"alfredo\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"brown\",\n        \"furColour\": \"cinamon\",\n        \"houseTrained\": true,\n        \"personalityTraits\": [\"curious\", \"adventurous\", \"intelligent\"]\n  }\n}","status":200,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/1"}]},"policies":[],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"ee192c6f-d4f7-4a98-bec9-8e91001ab6a8","metadata":{"title":"Get Sherlock","description":"Returns Sherlock"},"verb":0,"path":"/pets/{id}","response":{"type":1,"status":200,"headers":{"Content-Type":"application/json"},"body":"{\n  \"id\": 5,\n  \"name\": \"sherlock\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"maroon\",\n        \"furColour\": \"black\",\n        \"houseTrained\": false,\n        \"personalityTraits\": [\"inquisitive\", \"playful\", \"stubborn\"]\n  }\n}"},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/5"}]},"policies":[],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"5e69476b-da6f-4e29-a810-a8667f6819d9","metadata":{"title":"Get Tom","description":"Returns Tom"},"verb":0,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"id\": 8,\n  \"name\": \"tom\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"green\",\n        \"furColour\": \"blue\",\n        \"houseTrained\": true,\n        \"personalityTraits\": [\"aggressive\", \"energetic\", \"vindictive\"]\n  }\n}","status":200,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/8"}]},"policies":[],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"59e64d3a-ad6c-44f0-8f9b-8515d8558892","metadata":{"title":"Create New Resource","description":"Returns 201 Resource Created"},"verb":1,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"message\": \"Created new resource successfully\"\n}","status":201,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/13"}]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"75c8a90c-2198-4db9-b830-286f66f1518d","metadata":{"title":"Update Tom","description":"Returns 200 OK status for updated resource"},"verb":1,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"message\": \"Resource updated successfully\"\n}","status":200,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/8"}]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}},{"id":"fd6f6443-481e-4845-919c-44c5d066faef","metadata":{"title":"Delete Sherlock","description":"Returns 200 OK for deleted resource"},"verb":2,"path":"/pets/{id}","response":{"headers":{"Content-Type":"application/json"},"body":"{\n  \"message\": \"Resource deleted successfully\"\n}","status":200,"type":1},"requestMatchRules":{"headerRules":[],"queryRules":[],"bodyRules":[],"urlRules":[{"type":5,"path":"/pets/5"}]},"policies":[{"type":1,"value":500}],"defaultScenario":false,"tokenRule":{"validationType":0,"rules":[]}}]}
+{
+  "id": "51a757fc-13ba-4523-9d3f-4ad137ae9de0",
+  "metadata": {
+    "title": "PetStoreMockDef",
+    "description": "This is a sample mock definition generated for core HTTP methods to interact with a in-memory backend server"
+  },
+  "tokenValidation": false,
+  "openApi": {
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Orbital Pet Store",
+      "description": "An API that allows users to obtain existing information on pets, post new information and update/delete existing pet information",
+      "termsOfService": "https://smartbear.com/terms-of-use/",
+      "contact": {
+        "name": "Foci Solutions",
+        "url": "https://focisolutions.com/",
+        "email": "info@focisolutions.com"
+      },
+      "license": { "name": "MIT" }
+    },
+    "host": "petstore.swagger.io",
+    "basePath": "/v1",
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/pets": {
+        "get": {
+          "summary": "List all pets",
+          "operationId": "listPets",
+          "tags": ["pets"],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "How many items to return at one time (max 100)",
+              "required": false,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A paged array of pets",
+              "headers": {
+                "x-next": {
+                  "type": "string",
+                  "description": "A link to the next page of responses"
+                }
+              },
+              "schema": { "$ref": "#/definitions/Pets" }
+            },
+            "default": {
+              "description": "Unexpected error while fetching list of pets",
+              "schema": { "$ref": "#/definitions/Error" }
+            }
+          }
+        },
+        "post": {
+          "summary": "Creates a pet (new resource)",
+          "operationId": "createPets",
+          "tags": ["pets"],
+          "responses": {
+            "201": { "description": "Null response" },
+            "default": {
+              "description": "Unexpected error while creating a new pet",
+              "schema": { "$ref": "#/definitions/Error" }
+            }
+          }
+        }
+      },
+      "/pets/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the pet to retrieve",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "summary": "Info for a specific pet",
+          "operationId": "showPetById",
+          "tags": ["pets"],
+          "responses": {
+            "200": {
+              "description": "Expected response to a valid request",
+              "schema": { "$ref": "#/definitions/Pets" }
+            },
+            "default": {
+              "description": "Unexpected error while fetching {id}",
+              "schema": { "$ref": "#/definitions/Error" }
+            }
+          }
+        },
+        "put": {
+          "summary": "Creates a new pet (new resource), or updates an existing pet if specified in the request URL",
+          "operationId": "createsUpdatesPet",
+          "tags": ["pets"],
+          "responses": {
+            "200": {
+              "description": "Updated or created successfully",
+              "schema": { "$ref": "#/definitions/Pets" }
+            },
+            "default": {
+              "description": "Unexpected error while creating or updating pet",
+              "schema": { "$ref": "#/definitions/Error" }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletes a specified pet",
+          "operationId": "deletePet",
+          "tags": ["pets"],
+          "responses": {
+            "200": {
+              "description": "Deleted pet successfully",
+              "schema": { "$ref": "#/definitions/Pets" }
+            },
+            "default": {
+              "description": "Unexpected error while deleting pet",
+              "schema": { "$ref": "#/definitions/Error" }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Pet": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "name": { "type": "string" },
+          "tag": { "type": "string" },
+          "attributes": { "type": "object" }
+        }
+      },
+      "Pets": { "type": "array", "items": { "$ref": "#/definitions/Pet" } },
+      "Error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "integer", "format": "int32" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "c5117574-b2ed-49d4-b9d4-6e364a180714",
+      "metadata": {
+        "title": "Create a Pet",
+        "description": "Returns 201 Resource Created "
+      },
+      "verb": 3,
+      "path": "/pets",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"message\": \"Resource created successfully\"\n}",
+        "status": 201,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [
+          { "key": "Content-Type", "value": "application/json", "type": 5 }
+        ],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": []
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": true,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "3b73f4e3-4885-4fc6-bfa0-90b212c8ef29",
+      "metadata": {
+        "title": "Pet Not Found",
+        "description": "Return an Error 422 response for no pets found"
+      },
+      "verb": 0,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"error\":{\n    \"code\": 422,\n    \"message\": \"No pets found\"\n  }\n}",
+        "status": 422,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": []
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "0bb63084-091b-45f3-a3cd-5b52da59b4d0",
+      "metadata": {
+        "title": "Invalid Put Request",
+        "description": "Returns 400 Bad Request "
+      },
+      "verb": 1,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{ \n  \"error\":{\n    \"code\": 400,\n    \"message\": \"Unexepcted error: Bad request sent\"\n  }\n}",
+        "status": 400,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/string" }]
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "46986e66-ee6c-452c-af55-0b32dbedd2f3",
+      "metadata": {
+        "title": "Invalid Resource",
+        "description": "Returns 204 No Content"
+      },
+      "verb": 2,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"error\": {\n    \"code\": 204,\n    \"message\": \"No Content Found for selected resource\"\n  }\n}",
+        "status": 204,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/21" }]
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "853acaa8-b8af-4c41-8908-df5c32833960",
+      "metadata": { "title": "Get Alfredo", "description": "Returns Alfredo " },
+      "verb": 0,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"id\": 1,\n  \"name\": \"alfredo\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"brown\",\n        \"furColour\": \"cinamon\",\n        \"houseTrained\": true,\n        \"personalityTraits\": [\"curious\", \"adventurous\", \"intelligent\"]\n  }\n}",
+        "status": 200,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/1" }]
+      },
+      "policies": [],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "ee192c6f-d4f7-4a98-bec9-8e91001ab6a8",
+      "metadata": {
+        "title": "Get Sherlock",
+        "description": "Returns Sherlock"
+      },
+      "verb": 0,
+      "path": "/pets/{id}",
+      "response": {
+        "type": 1,
+        "status": 200,
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"id\": 5,\n  \"name\": \"sherlock\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"maroon\",\n        \"furColour\": \"black\",\n        \"houseTrained\": false,\n        \"personalityTraits\": [\"inquisitive\", \"playful\", \"stubborn\"]\n  }\n}"
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/5" }]
+      },
+      "policies": [],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "5e69476b-da6f-4e29-a810-a8667f6819d9",
+      "metadata": { "title": "Get Tom", "description": "Returns Tom" },
+      "verb": 0,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"id\": 8,\n  \"name\": \"tom\",\n  \"tag\": \"cat\",\n  \"attributes\": {\n        \"eyeColour\":\"green\",\n        \"furColour\": \"blue\",\n        \"houseTrained\": true,\n        \"personalityTraits\": [\"aggressive\", \"energetic\", \"vindictive\"]\n  }\n}",
+        "status": 200,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/8" }]
+      },
+      "policies": [],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "59e64d3a-ad6c-44f0-8f9b-8515d8558892",
+      "metadata": {
+        "title": "Create New Resource",
+        "description": "Returns 201 Resource Created"
+      },
+      "verb": 1,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"message\": \"Created new resource successfully\"\n}",
+        "status": 201,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/13" }]
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "75c8a90c-2198-4db9-b830-286f66f1518d",
+      "metadata": {
+        "title": "Update Tom",
+        "description": "Returns 200 OK status for updated resource"
+      },
+      "verb": 1,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"message\": \"Resource updated successfully\"\n}",
+        "status": 200,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/8" }]
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    },
+    {
+      "id": "fd6f6443-481e-4845-919c-44c5d066faef",
+      "metadata": {
+        "title": "Delete Sherlock",
+        "description": "Returns 200 OK for deleted resource"
+      },
+      "verb": 2,
+      "path": "/pets/{id}",
+      "response": {
+        "headers": { "Content-Type": "application/json" },
+        "body": "{\n  \"message\": \"Resource deleted successfully\"\n}",
+        "status": 200,
+        "type": 1
+      },
+      "requestMatchRules": {
+        "headerRules": [],
+        "queryRules": [],
+        "bodyRules": [],
+        "urlRules": [{ "type": 5, "path": "/pets/5" }]
+      },
+      "policies": [{ "type": 1, "value": 500 }],
+      "defaultScenario": false,
+      "tokenRule": { "validationType": 0, "rules": [] }
+    }
+  ]
+}
